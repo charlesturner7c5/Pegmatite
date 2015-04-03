@@ -199,11 +199,11 @@ struct CalculatorGrammar
 	 * can only be parents of multiply or divide operations (or children via
 	 * parenthetical expressions), not direct children.
 	 */
-	Rule mul_op = mul >> '*' >> val;
+	Rule mul_op = mul >> '*' >> expr;
 	/**
 	 * Divide operations follow the same syntax as multiply.
 	 */
-	Rule div_op = mul >> '/' >> val;
+	Rule div_op = mul >> '/' >> expr;
 	/**
 	 * Multiply-precedence operations are either multiply or divide operations,
 	 * or simple values (numbers of parenthetical expressions).

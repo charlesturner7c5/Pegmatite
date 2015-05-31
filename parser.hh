@@ -360,13 +360,13 @@ class IteratorInput : public Input
 	 */
 	bool fillBuffer(Index start, Index &length, char32_t *&b) override
 	{
-		if (start > (Index)(end-begin))
+		if (start > std::distance(begin, end))
 		{
 			length = 0;
 			return false;
 		}
 		Index copied = 0;
-		for (T i=(begin+start) ; (i != end) && (copied < length) ; ++i)
+		for (T i=std::advance(begin, start) ; (i != end) && (copied < length) ; ++i)
 		{
 			b[copied++] = (char32_t)(*i);
 		}
@@ -376,7 +376,7 @@ class IteratorInput : public Input
 	/**
 	 * Returns the size of the string.
 	 */
-	Index size() const override { return (Index)(end - begin); }
+	Index size() const override { return std::distance(begin, end); }
 };
 
 

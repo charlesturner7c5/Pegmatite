@@ -786,9 +786,8 @@ public:
 
 
 //and
-//FIXME: What is this?  Parses the subexpression but resets the state
-//independent of success or failure?
-//THIS IS WHY COMMENTS MATTER!
+// Try to parse expr, succeed iff the parse succeeds, but do not
+// consume any input.
 class AndExpr : public UnaryExpr
 {
 public:

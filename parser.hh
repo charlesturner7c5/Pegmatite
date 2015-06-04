@@ -370,7 +370,7 @@ class IteratorInput : public Input
 		Index copied = 0;
 		for (T i=std::advance(begin, start) ; (i != end) && (copied < length) ; ++i)
 		{
-			b[copied++] = (char32_t)(*i);
+			b[copied++] = static_cast<char32_t>(*i);
 		}
 		length = copied;
 		return true;
@@ -797,7 +797,7 @@ template <class T> T &operator << (T &stream, const InputRange &ir)
 {
 	for(auto c : ir)
 	{
-		stream << (typename T::char_type)c;
+		stream << static_cast<typename T::char_type>(c);
 	}
 	return stream;
 }
